@@ -1,43 +1,80 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.css">
-        <link rel="stylesheet" href="/styles/base.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/form.css">
-        <link rel="stylesheet" href="/styles/footer.css">
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sentiment Analyzer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?&family=Roboto:wght@300;500;700&family=Roboto+Slab:wght@300;400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/1aac26dbd0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-    <body>
+  <body>
+    <header>
+      <h1>Sentiment Analyzer</h1>
+    </header>
 
-        <header>
-            <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
-            </div>
-        </header>
+    <main>
+      <p>Enter a URL of an article or a blog to discover its sentiment.</p>
+      <section>
+        <form class="" onsubmit="return Client.handleSubmit(event)">
+          <input
+            id="url"
+            type="text"
+            name="input"
+            value=""
+            placeholder="Enter URL here"
+          />
+          <input
+            type="submit"
+            name=""
+            value="submit"
+            onclick="return Client.handleSubmit(event)"
+            onsubmit="return handleSubmit(event)"
+          />
+        </form>
+      </section>
 
-        <main>
-            <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
-                </form>
-            </section>
+      <section>
+        <strong>Form Results:</strong>
+        <div id="polarity"></div>
+        <div id="agreement"></div>
+        <div id="subjectivity"></div>
+        <div id="confidence"></div>
+        <div id="irony"></div>
+      </section>
+    </main>
 
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
-            </section>
-        </main>
+    <footer>
+      <nav class="fnav">
+        <ul>
+          <li>
+            <a href="https://www.linkedin.com/in/osamayasserr/" target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://github.com/oyasr" target="_blank"
+              ><i class="fab fa-github-square"></i
+            ></a>
+          </li>
+        </ul>
+        <div class="copyright">© 2021</div>
+      </nav>
+    </footer>
 
-        <footer>
-            <p>This is a footer</p>
-        </footer>
-
-    </body>
+    <script>
+      // Checks that service workers are supported
+      if ("serviceWorker" in navigator) {
+        // Uses the window load event to keep the page load performant
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
+    </script>
+  </body>
 </html>
