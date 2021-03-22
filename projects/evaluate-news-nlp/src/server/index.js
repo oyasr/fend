@@ -1,3 +1,7 @@
+// Imports the environment variables file
+const dotenv = require('dotenv')
+dotenv.config();
+
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
@@ -13,7 +17,7 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
 
-// designates what port the app will listen to for incoming requests
+// Designates what port the app will listen to for incoming requests
 app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
 })
